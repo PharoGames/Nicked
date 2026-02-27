@@ -27,7 +27,7 @@ Replace `TAG` with the latest release tag (e.g. `v1.0.0`). You can browse availa
     }
 
     dependencies {
-        compileOnly 'com.github.PharoGames:Nicked:TAG:api'
+        compileOnly 'net.pharogames:Nicked:TAG:api'
     }
     ```
 
@@ -39,7 +39,7 @@ Replace `TAG` with the latest release tag (e.g. `v1.0.0`). You can browse availa
     }
 
     dependencies {
-        compileOnly("com.github.PharoGames:Nicked:TAG:api")
+        compileOnly("net.pharogames:Nicked:TAG:api")
     }
     ```
 
@@ -55,7 +55,7 @@ Replace `TAG` with the latest release tag (e.g. `v1.0.0`). You can browse availa
 
     <dependencies>
         <dependency>
-            <groupId>com.github.PharoGames</groupId>
+            <groupId>net.pharogames</groupId>
             <artifactId>Nicked</artifactId>
             <version>TAG</version>
             <classifier>api</classifier>

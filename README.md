@@ -73,7 +73,7 @@ Add Nicked as a dependency via JitPack:
 </repository>
 
 <dependency>
-    <groupId>com.github.PharoGames</groupId>
+    <groupId>net.pharogames</groupId>
     <artifactId>Nicked</artifactId>
     <version>VERSION</version>
     <classifier>api</classifier>
@@ -88,7 +88,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'com.github.PharoGames:Nicked:VERSION:api'
+    compileOnly 'net.pharogames:Nicked:VERSION:api'
 }
 ```
 

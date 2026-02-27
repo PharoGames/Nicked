@@ -77,7 +77,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    compileOnly 'com.github.PharoGames:Nicked:VERSION:api'
+    compileOnly 'net.pharogames:Nicked:VERSION:api'
 }
 ```
 
@@ -88,7 +88,7 @@ dependencies {
     <url>https://jitpack.io</url>
 </repository>
 <dependency>
-    <groupId>com.github.PharoGames</groupId>
+    <groupId>net.pharogames</groupId>
     <artifactId>Nicked</artifactId>
     <version>VERSION</version>
     <classifier>api</classifier>
@@ -96,7 +96,7 @@ dependencies {
 </dependency>
 ```
 
-Replace `VERSION` with the latest release tag (e.g. `v1.0.0`). See the [API documentation](https://pharogames.github.io/Nicked/api/) for the full reference.
+Replace `VERSION` with the latest release tag (e.g. `v1.0.0`). See the [API documentation](https://nicked-docs.vercel.app/api/) for the full reference.
 
 ---
 
