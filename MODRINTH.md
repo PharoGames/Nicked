@@ -104,12 +104,12 @@ Replace `VERSION` with the latest release tag (e.g. `v1.0.0`). See the [API docu
 
 | Resource | URL |
 |---|---|
-| 📖 Documentation | [pharogames.github.io/Nicked](https://pharogames.github.io/Nicked) |
+| 📖 Documentation | [nicked-docs.vercel.app](https://nicked-docs.vercel.app/) |
 | 💬 Discord | [discord.gg/7eQt8sQ8at](https://discord.gg/7eQt8sQ8at) |
 | 🐛 Issues | [GitHub Issues](https://github.com/PharoGames/Nicked/issues) |
 | 💡 Feature Requests | [GitHub Issues](https://github.com/PharoGames/Nicked/issues/new/choose) |
 | 🔧 Source Code | [github.com/PharoGames/Nicked](https://github.com/PharoGames/Nicked) |
-| 📦 Developer API | [API Docs](https://pharogames.github.io/Nicked/api/) |
+| 📦 Developer API | [API Docs](https://nicked-docs.vercel.app/api/) |
 
 ---
 
