@@ -1,0 +1,95 @@
+name: Bug Report
+description: Report a bug or unexpected behaviour in Nicked
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in as much detail as possible so we can reproduce and fix it quickly.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+      placeholder: "Example: Running /nick Dream changes the name but the skin never updates."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Step-by-step instructions to reliably reproduce the issue.
+      placeholder: |
+        1. Start a fresh Paper 1.20.4 server with Nicked installed
+        2. Log in as an OP
+        3. Run `/nick Dream`
+        4. Observe that the name changes but the skin stays as the original
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behaviour
+      description: What did you expect to happen?
+      placeholder: "The player's name and skin should both change to match the 'Dream' Minecraft account."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behaviour
+      description: What actually happened? Include any error messages or console output.
+      placeholder: "Name changed but skin did not update. No errors in console."
+    validations:
+      required: true
+
+  - type: input
+    id: nicked-version
+    attributes:
+      label: Nicked Version
+      description: The version of Nicked you are running (check `/version Nicked` in-game or the jar filename).
+      placeholder: "e.g. 1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: server-software
+    attributes:
+      label: Server Software & Version
+      description: "e.g. Paper 1.20.4 build 437, Spigot 1.20.1"
+      placeholder: "e.g. Paper 1.20.4 build 437"
+    validations:
+      required: true
+
+  - type: input
+    id: java-version
+    attributes:
+      label: Java Version
+      description: Output of `java -version` on the server.
+      placeholder: "e.g. OpenJDK 21.0.2"
+    validations:
+      required: true
+
+  - type: textarea
+    id: plugin-list
+    attributes:
+      label: Other Plugins
+      description: List any other plugins installed on the server that might be relevant.
+      placeholder: |
+        - PlaceholderAPI 2.11.6
+        - LuckPerms 5.4
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      description: Paste any relevant console output or stack traces here. Wrap in ``` for formatting.
+      render: text
+    validations:
+      required: false
