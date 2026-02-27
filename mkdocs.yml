@@ -77,3 +77,4 @@ nav:
       - Events: api/events.md
       - Data Types: api/data-types.md
   - PlaceholderAPI: placeholderapi.md
+  - Publishing: publishing.md

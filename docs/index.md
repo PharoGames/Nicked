@@ -88,3 +88,4 @@ Nicked lets operators and players adopt a completely different identity on the s
 | [Permissions](permissions.md) | All permission nodes |
 | [Developer API](api/index.md) | Accessing the API, listening to events, code examples |
 | [PlaceholderAPI](placeholderapi.md) | All three placeholders and usage examples |
+|| [Publishing](publishing.md) | Modrinth setup, CI/CD, and release workflow |

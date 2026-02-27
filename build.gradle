@@ -2,10 +2,14 @@ plugins {
     id 'java'
     id 'io.github.goooler.shadow' version "${shadow_version}"
     id 'maven-publish'
+    id 'com.modrinth.minotaur' version '2.+'
 }
 
 group = 'com.nicked'
-version = '1.0.0'
+// When built from a GitHub tag (e.g. v1.2.3), strip the leading 'v' for the version number.
+// Falls back to the hardcoded default during local development.
+def envTag = System.getenv("GITHUB_REF_NAME")
+version = (envTag != null && envTag.startsWith("v")) ? envTag.substring(1) : '1.0.0'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
@@ -47,6 +51,29 @@ jar {
 }
 
 build.dependsOn shadowJar
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    // Set this to your Modrinth project ID or slug after creating the project.
+    projectId = "hkZDBTGD"
+    versionNumber = project.version
+    versionName = "Nicked ${project.version}"
+    versionType = "release"
+    uploadFile = shadowJar
+    gameVersions = [
+        "1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4",
+        "1.20.5", "1.20.6",
+        "1.21", "1.21.1", "1.21.2", "1.21.3", "1.21.4"
+    ]
+    loaders = ["bukkit", "spigot", "paper", "purpur", "folia"]
+    changelog = System.getenv("CHANGELOG") ?: "See the [GitHub releases page](https://github.com/PharoGames/Nicked/releases) for the full changelog."
+    syncBodyFrom = rootProject.file("MODRINTH.md").text
+    dependencies {
+        optional.project "placeholderapi"
+    }
+}
+
+tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
 
 publishing {
     publications {

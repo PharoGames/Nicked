@@ -8,3 +8,4 @@ site/
 .idea/
 *.iml
 .vercel
+.env
