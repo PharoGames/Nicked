@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "pip3 install mkdocs-material && mkdocs build"
+  }
+}

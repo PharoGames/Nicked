@@ -1,6 +1,13 @@
 {
-  "buildCommand": "pip3 install -r requirements.txt && mkdocs build",
-  "outputDirectory": "site",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "site"
+      }
+    }
+  ],
   "cleanUrls": true,
   "trailingSlash": false
 }
