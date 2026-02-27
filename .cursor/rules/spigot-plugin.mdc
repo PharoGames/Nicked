@@ -1,0 +1,40 @@
+---
+description: Spigot/Paper plugin development conventions
+globs: **/*.java
+alwaysApply: false
+---
+
+# Spigot Plugin Development
+
+## Plugin Structure
+
+- Main class extends `JavaPlugin`; annotate with `@NotNull` where applicable
+- Use `plugin.yml` for commands, permissions, and metadata
+- Keep `onEnable()` minimal; delegate to managers/registries
+- Use `onDisable()` to clean up listeners, tasks, and resources
+
+## Commands & Listeners
+
+- One class per command; implement `CommandExecutor` and `TabCompleter`
+- Register commands in `onEnable()`: `getCommand("name").setExecutor(...)`
+- Use `@EventHandler` with correct `EventPriority` when order matters
+- Unregister listeners in `onDisable()` if registered dynamically
+
+## Async Safety
+
+- **Never** access Bukkit API from async threads (scheduler, database callbacks)
+- Use `Bukkit.getScheduler().runTask(plugin, () -> {...})` to return to main thread
+- Use `Bukkit.getScheduler().runTaskAsynchronously()` for I/O
+- Avoid blocking the main thread; use async for DB, HTTP, file I/O
+
+## Configuration
+
+- Use `config.yml` with `saveDefaultConfig()` on first load
+- Validate config on load; fail fast if required keys are missing
+- Use `FileConfiguration`; avoid hardcoding paths
+
+## Naming
+
+- Commands: lowercase, hyphen-separated (e.g. `my-command`)
+- Permissions: `pluginname.action` (e.g. `nicker.use`)
+- Config keys: `section.subsection.key` in snake_case

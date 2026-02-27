@@ -1,0 +1,40 @@
+---
+description: Gradle build configuration for Spigot plugins
+globs: build.gradle*, settings.gradle, gradle.properties, **/*.gradle*
+alwaysApply: false
+---
+
+# Gradle Build Rules
+
+## Structure
+
+- Use `build.gradle.kts` (Kotlin DSL) or `build.gradle` consistently
+- Keep `settings.gradle` minimal; use `gradle.properties` for version numbers
+- Use the `java` and `com.github.johnrengelman.shadow` plugins for fat JARs
+
+## Spigot Plugin Build
+
+```groovy
+// Use Paper/Spigot API as compileOnly
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+}
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT'
+}
+```
+
+## Best Practices
+
+- Pin dependency versions in `build.gradle` or `gradle/libs.versions.toml`
+- Use `compileOnly` for Spigot/Paper; never bundle server APIs
+- Configure `shadowJar` to relocate shaded dependencies to avoid conflicts
+- Set `sourceCompatibility` and `targetCompatibility` to match target server
+- Add `-parameters` compiler arg for better reflection/debugging
+
+## Tasks
+
+- Use `./gradlew build` for standard build
+- Use `./gradlew shadowJar` when shading dependencies
+- Avoid committing `gradle/wrapper` JAR if using wrapper; commit `gradle-wrapper.properties`

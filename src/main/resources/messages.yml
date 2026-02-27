@@ -1,0 +1,31 @@
+# ============================================================
+# Nicked - Messages
+# All messages use MiniMessage format.
+# Placeholders are wrapped in {curly_braces}.
+# ============================================================
+
+prefix: "<gray>[<gradient:#ff6b6b:#ffa502>Nicked</gradient>]</gray> "
+
+nick_applied: "<green>You are now nicked as <white>{nick}</white>."
+nick_removed: "<green>Your nick has been removed. You are now <white>{name}</white> again."
+
+nick_other_applied: "<green>Nicked <white>{target}</white> as <white>{nick}</white>."
+
+nick_all_applied: "<green>All online players have been randomly nicked."
+
+unnick_not_nicked: "<red>You are not currently nicked."
+unnick_other_not_nicked: "<red><white>{target}</white> is not currently nicked."
+
+realname_result: "<gray><white>{nick}</white> is really <aqua>{real_name}</aqua>."
+realname_not_nicked: "<gray><white>{player}</white> is not nicked."
+
+no_permission: "<red>You do not have permission to do that."
+player_only: "<red>This command can only be used by players."
+invalid_name: "<red>'<white>{name}</white>' is not a valid Minecraft username (3-16 chars, alphanumeric + underscores)."
+player_not_found: "<red>Player '<white>{name}</white>' not found."
+skin_fetch_failed: "<yellow>Could not fetch skin for '<white>{nick}</white>'. Nick applied without skin change."
+usage_nick: "<red>Usage: /nick <name> or /nick (to random nick / unnick)"
+usage_nickother: "<red>Usage: /nickother <player> <nick>"
+usage_realname: "<red>Usage: /realname <player>"
+nick_cancelled: "<red>Nick change was cancelled by another plugin."
+no_random_pool: "<red>No names available in the random nick pool and no players are online."

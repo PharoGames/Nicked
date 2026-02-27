@@ -1,0 +1,48 @@
+# ============================================================
+# Nicked - Configuration
+# ============================================================
+
+# ============================================================
+# DANGER ZONE - READ CAREFULLY BEFORE ENABLING
+# ============================================================
+# When enabled, Nicked will modify the server-side GameProfile
+# for each nicked player via reflection. This means:
+#   - ALL other plugins will see the fake name as the real name
+#   - /tp, /msg, /give, etc. will resolve to the fake name
+#   - Plugins that store data by player name WILL be confused
+#   - Data corruption is possible if other plugins save by name
+# This is disabled by default. USE AT YOUR OWN RISK.
+# ============================================================
+internal_name_change:
+  enabled: false
+
+# Keep nicks active after the server restarts.
+# Nicks are written to plugins/Nicked/nicks.yml on change.
+persist_across_restarts: false
+
+# Keep nicks active when a player logs out and back in.
+# If persist_across_restarts is also true, this survives restarts too.
+persist_across_logout: false
+
+# Also change the skin for the nicked player themselves
+# (requires a brief respawn packet sent to the player).
+skin_change_for_self: true
+
+# Enforce that nick names are valid Minecraft usernames:
+# 3-16 characters, alphanumeric and underscores only.
+strict_name_validation: true
+
+# How long to cache fetched skins from the Mojang API (in minutes).
+# Mojang rate limits at 600 requests per 10 minutes.
+# Must be greater than 0.
+skin_cache_ttl_minutes: 30
+
+# Pool of names to pick from for /nick (no args) and /nickall.
+# Leave empty to fall back to currently online player names.
+random_nick_pool:
+  - Notch
+  - jeb_
+  - Dinnerbone
+  - Herobrine
+  - Dream
+  - Technoblade

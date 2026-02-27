@@ -1,0 +1,45 @@
+---
+description: Java patterns and error handling
+globs: **/*.java
+alwaysApply: false
+---
+
+# Java Patterns
+
+## Error Handling
+
+```java
+// ❌ BAD - empty catch
+try {
+    loadConfig();
+} catch (IOException e) {}
+
+// ✅ GOOD - log and rethrow or handle
+try {
+    loadConfig();
+} catch (IOException e) {
+    getLogger().log(Level.SEVERE, "Failed to load config", e);
+    throw new IllegalStateException("Config load failed", e);
+}
+```
+
+## Resource Management
+
+```java
+// ✅ GOOD - try-with-resources
+try (InputStream in = getResource("config.yml")) {
+    // use stream
+}
+```
+
+## Defensive Copying
+
+- Return copies of mutable collections from getters
+- Use `Collections.unmodifiableList()` for exposed lists
+- Clone or copy before storing if caller may mutate
+
+## Logging
+
+- Use `Plugin#getLogger()` for plugin classes
+- Levels: `SEVERE` (errors), `WARNING` (recoverable), `INFO` (important), `FINE`/`FINER` (debug)
+- Include context: what operation failed, key values (e.g. player name, command)

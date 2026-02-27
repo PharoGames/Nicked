@@ -1,0 +1,43 @@
+---
+description: How to update and maintain project documentation
+globs: docs/**/*
+alwaysApply: true
+---
+
+# Documentation Updates
+
+The `docs/` folder is the **central place for context and documentation** of the whole plugin. Keep it current and useful.
+
+## When to Update Docs
+
+Update docs when you:
+
+- **Add or change features** – Document new commands, config options, permissions, APIs
+- **Change architecture** – Update diagrams, module descriptions, data flow
+- **Fix important bugs** – Note workarounds or gotchas in relevant docs
+- **Change setup/build** – Update installation, build, or deployment instructions
+- **Introduce conventions** – Add or revise coding standards, naming, patterns
+
+## How to Update
+
+1. **Choose the right file** – Use existing docs (e.g. `docs/commands.md`, `docs/config.md`) or create new ones for new topics
+2. **Keep structure clear** – Use headings, lists, and code blocks; avoid long walls of text
+3. **Cross-reference** – Link between docs where relevant (e.g. `See [config.md](config.md)`)
+4. **Stay concise** – Focus on what future readers (including you) need to know
+
+## Suggested Structure
+
+```
+docs/
+  README.md      # Overview, quick start, links to other docs
+  commands.md    # Commands, usage, permissions
+  config.md      # Configuration options and examples
+  api.md         # Public APIs, hooks, extension points
+  architecture.md # High-level design, modules, data flow
+```
+
+## Format
+
+- Use **Markdown** (`.md`)
+- Use fenced code blocks with language tags for examples
+- Keep files under ~200 lines; split into multiple files if needed

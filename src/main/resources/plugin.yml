@@ -1,0 +1,64 @@
+name: Nicked
+version: '1.0.0'
+main: com.nicked.NickedPlugin
+api-version: '1.20'
+description: Packet-level nick plugin with skin changing, API, and PlaceholderAPI support.
+authors:
+  - Nicker
+
+softdepend:
+  - PlaceholderAPI
+  - ProtocolLib
+  - ProtocolSupport
+  - ViaVersion
+  - ViaBackwards
+  - ViaRewind
+  - Geyser-Spigot
+
+commands:
+  nick:
+    description: Nick yourself or another player.
+    usage: /nick [player] or /nick <name>
+    permission: nicked.command.nick
+  nickall:
+    description: Randomly nick all online players.
+    usage: /nickall
+    permission: nicked.command.nickall
+  unnick:
+    description: Remove your nick.
+    usage: /unnick
+    permission: nicked.command.unnick
+  nickother:
+    description: Nick another player to a specific name.
+    usage: /nickother <player> <nick>
+    permission: nicked.command.nickother
+  realname:
+    description: Reveal the real name of a nicked player.
+    usage: /realname <player>
+    permission: nicked.command.realname
+
+permissions:
+  nicked.admin:
+    description: Grants access to all Nicked commands.
+    default: op
+    children:
+      nicked.command.nick: true
+      nicked.command.nickall: true
+      nicked.command.unnick: true
+      nicked.command.nickother: true
+      nicked.command.realname: true
+  nicked.command.nick:
+    description: Allows use of /nick.
+    default: op
+  nicked.command.nickall:
+    description: Allows use of /nickall.
+    default: op
+  nicked.command.unnick:
+    description: Allows use of /unnick.
+    default: op
+  nicked.command.nickother:
+    description: Allows use of /nickother.
+    default: op
+  nicked.command.realname:
+    description: Allows use of /realname.
+    default: op

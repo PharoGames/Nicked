@@ -1,0 +1,55 @@
+---
+description: Fail-fast behaviour and defensive programming
+alwaysApply: true
+---
+
+# Fail Fast
+
+## Philosophy
+
+Detect and report errors as early as possible. Do not silently swallow or defer failures.
+
+## Input Validation
+
+```java
+// ✅ GOOD - fail immediately with clear message
+public void setAmount(int amount) {
+    if (amount <= 0) {
+        throw new IllegalArgumentException("amount must be positive, got: " + amount);
+    }
+    this.amount = amount;
+}
+
+// ❌ BAD - silent or deferred failure
+public void setAmount(int amount) {
+    if (amount <= 0) return;  // Silent ignore
+    this.amount = amount;
+}
+```
+
+## Null Safety
+
+```java
+// ✅ GOOD
+public void process(Player player) {
+    Objects.requireNonNull(player, "player cannot be null");
+    // ...
+}
+
+// ❌ BAD
+public void process(Player player) {
+    if (player == null) return;  // Hides bug; caller should fix
+}
+```
+
+## Configuration & Startup
+
+- Validate `plugin.yml`, `config.yml`, and required resources in `onEnable()`
+- If critical config is missing or invalid, call `getLogger().severe(...)` and `getServer().getPluginManager().disablePlugin(this)` then return
+- Never start with broken state; fail during enable
+
+## Exceptions
+
+- Do not catch and ignore; log and rethrow or handle meaningfully
+- Use specific exception types; avoid generic `Exception`
+- Include context in error messages (what failed, expected vs actual)

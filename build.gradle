@@ -1,0 +1,90 @@
+plugins {
+    id 'java'
+    id 'io.github.goooler.shadow' version "${shadow_version}"
+    id 'maven-publish'
+}
+
+group = 'com.nicked'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    mavenCentral()
+    maven { url = uri('https://hub.spigotmc.org/nexus/content/repositories/snapshots/') }
+    maven { url = uri('https://repo.codemc.io/repository/maven-releases/') }
+    maven { url = uri('https://repo.codemc.io/repository/maven-snapshots/') }
+    maven { url = uri('https://repo.extendedclip.com/content/repositories/placeholderapi/') }
+}
+
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:${spigot_version}"
+    compileOnly "me.clip:placeholderapi:${placeholderapi_version}"
+    compileOnly "net.kyori:adventure-api:${adventure_version}"
+    compileOnly "net.kyori:adventure-text-minimessage:${adventure_version}"
+    compileOnly "net.kyori:adventure-text-serializer-legacy:${adventure_version}"
+    implementation "com.github.retrooper:packetevents-spigot:${packetevents_version}"
+}
+
+compileJava {
+    options.compilerArgs += ['-parameters']
+    options.encoding = 'UTF-8'
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    relocate 'com.github.retrooper.packetevents', 'com.nicked.lib.packetevents.api'
+    relocate 'io.github.retrooper.packetevents', 'com.nicked.lib.packetevents.impl'
+    minimize()
+}
+
+jar {
+    enabled = true
+    archiveClassifier.set('api')
+}
+
+build.dependsOn shadowJar
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.github.PharoGames'
+            artifactId = 'Nicked'
+            version = project.version
+
+            artifact(jar) {
+                classifier = 'api'
+            }
+
+            pom {
+                name = 'Nicked'
+                description = 'Packet-level nick plugin with skin changing, developer API, and PlaceholderAPI support.'
+                url = 'https://github.com/PharoGames/Nicked'
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'rishabhvenu'
+                        name = 'rishabhvenu'
+                        organizationUrl = 'https://github.com/PharoGames'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/PharoGames/Nicked.git'
+                    developerConnection = 'scm:git:ssh://github.com/PharoGames/Nicked.git'
+                    url = 'https://github.com/PharoGames/Nicked'
+                }
+            }
+        }
+    }
+}

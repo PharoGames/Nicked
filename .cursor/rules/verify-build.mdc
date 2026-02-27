@@ -1,0 +1,32 @@
+---
+description: Verify code compiles after changes
+alwaysApply: true
+---
+
+# Verify Build After Changes
+
+After editing Java code or Gradle build files, **always run a build** to ensure the project compiles.
+
+## When to Run
+
+- After modifying any `.java` file
+- After changing `build.gradle`, `build.gradle.kts`, `settings.gradle`, or `gradle.properties`
+- After adding, removing, or updating dependencies
+
+## Command
+
+```bash
+./gradlew build
+```
+
+Or for a quicker compile-only check:
+
+```bash
+./gradlew compileJava
+```
+
+## Expectations
+
+- Build must succeed (exit code 0) before considering the change complete
+- Fix any compilation errors before finishing
+- If tests exist, `./gradlew build` will run them; fix failing tests as well

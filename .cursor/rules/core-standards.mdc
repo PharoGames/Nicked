@@ -1,0 +1,29 @@
+---
+description: Core coding standards and best practices
+alwaysApply: true
+---
+
+# Core Coding Standards
+
+## General Principles
+
+- **Single responsibility**: One class/function does one thing well
+- **DRY**: Don't repeat yourself; extract shared logic
+- **Meaningful names**: Variables, methods, and classes must clearly convey intent
+- **Immutability**: Prefer `final` fields and immutable data where possible
+- **Fail fast**: Validate inputs and fail immediately with clear errors (see fail-fast rule)
+
+## Java Conventions
+
+- Use `@Override` when implementing/overriding methods
+- Prefer `Objects.requireNonNull()` for null checks on parameters
+- Use `@Nullable` / `@NonNull` annotations when available
+- Avoid magic numbers; use named constants
+- Keep methods short (< 30 lines); extract when longer
+
+## Code Quality
+
+- No empty catch blocks; log and rethrow or handle explicitly
+- Avoid `catch (Exception e)`; catch specific exceptions
+- Use try-with-resources for `Closeable` / `AutoCloseable`
+- Document public APIs with Javadoc
